@@ -7,7 +7,6 @@
     "build": "npm install && node_modules/.bin",
     "start": "npm run build && node dist/index.js --cluster",
     "dev": "nodemon",
-
     "transpile": "babel src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "node_modules/.bin/forever ./dist/index.js",
