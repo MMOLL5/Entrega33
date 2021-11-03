@@ -25,6 +25,7 @@ import cluster from 'cluster';
 import os from 'os';
 import compression from 'compression';
 import log4js from 'log4js';
+import { PORT } from '..';
 //import logger from './services/logs';
 
 log4js.configure({
@@ -55,7 +56,7 @@ connectDb().then(() => {
 });
 
 /*Declaración puerto y app*/
-const puerto = argumentos[2]|| 8080;
+//const puerto = argumentos[2]|| 8080;
 const mode = argumentos[5]|| 'FORK';
 const numCPUs = os.cpus().length;
 const app = express();
@@ -107,13 +108,13 @@ if (mode == 'CLUSTER' && cluster.isMaster) {
 } else {
   /* --------------------------------------------------------------------------- */
   /* WORKERS */
-  const PORT = 8080;
+  //const PORT = 8080;
 
-  appServer.listen(puerto, () =>
+  appServer.listen(PORT, () =>
     /*console.log(
       `Servidor express escuchando en el puerto ${puerto} - PID WORKER ${process.pid}`
     )*/
-    logger.info(`Servidor express escuchando en el puerto ${puerto} - PID WORKER ${process.pid}`)
+    logger.info(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
   );
 }
 //appServer.listen(puerto, () => console.log('Server UP en puerto', puerto));
